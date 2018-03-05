@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>《如影随形》</title>
+    <meta name="keywords" content="个人博客,举酒属客,响应式" />
+    <meta name="description" content="举酒属客个人博客，黑色、简约。" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/ico.png">
+    <link href="css/Quote/base.css" rel="stylesheet">
+    <link href="css/Quote/messageBoard.css" rel="stylesheet">
+    <link href="css/Quote/media.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/paging.css">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="../Backstage_/js/Quote/jquery-2.1.4.min.js"></script>
+    <script src="js/Quote/paging.js"></script>
+    <script src="../Backstage_/lib/layer/layer.js"></script>
+</head>
+<body>
+<div class="ibody">
+    <!--<header>-->
+        <!--<h1>如影随形</h1>-->
+        <!--<h2>影子是一个会撒谎的精灵，它在虚空中流浪和等待被发现之间;在存在与不存在之间....</h2>-->
+        <!--<div class="logo"><a href="index.html"></a></div>-->
+        <!--<nav id="topnav"><a href="index.html">首页</a><a href="aboutMe.html">关于我</a><a href="newlist.html">文章</a><a href="messageBoard.html">留言板</a><a href="../Backstage_/login.html">登录</a></nav>-->
+    <!--</header>-->
+    <script src="js/own/innerHtml.js"></script>
+    <article>
+        <div class="container">
+            <h2 class="ctitle"><b>留言板</b> <span>你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span></h2>
+            <div class="gbook">
+                <div class="about">
+                    <div id="fountainG">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </div>
+                    <div class="about_girl"><span class="about_none"><a href="#"><img src="images/girl.jpg"></a></span>
+                        <p>当您驻足停留过，从此便注定我们的缘分。站在时间的尽头，我们已是朋友，前端的路上我再也不用一个人独自行走。</p>
+                    </div>
+                    <div class="leave">
+                        <div style="margin-bottom: 30px;">
+                            <div class="cont">
+                                <input type="text" placeholder="用户名" id="userName">
+                                <img id="people_img"><a href="JavaScript:;" id="people_aimg">选择头像</a>
+                                <textarea id="textArea"></textarea>
+                                <p><a href="JavaScript:;" class="fabu">发表</a></p>
+                            </div>
+                        </div>
+                        <div id="btnMessage">
+
+                        </div>
+                        <div class="page box" id="box">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <aside>
+        <div class="avatar"><a href="aboutMe.html"><span>About Me</span></a></div>
+        <div class="topspaceinfo">
+            <h1>赢的起也要输的起</h1>
+            <p>人生就是一场赌博，难道不是吗？</p>
+        </div>
+        <div class="about_c">
+            <p>网名：Fwbttg | 举酒属客</p>
+            <p>职业：Web前端</p>
+            <p>籍贯：四川省-成都市</p>
+            <p>电话：13908184847</p>
+            <p>邮箱：1214591474@qq.com</p>
+        </div>
+    </aside>
+    <script src="js/Quote/silder.js"></script>
+    <div class="clear"></div>
+    <!-- 清除浮动 -->
+</div>
+</body>
+<script src="../Backstage_/lib/ueditor/ueditor.config.js"></script>
+<script src="../Backstage_/lib/ueditor/ueditor.all.js"> </script>
+<script src="../Backstage_/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script id="uploadEditor" type="text/plain" style="display:none;"></script>
+<script>
+    var _uploadEditor;
+    $(function () {
+        //重新实例化一个编辑器，防止在上面的editor编辑器中显示上传的图片或者文件
+        _uploadEditor = UE.getEditor('uploadEditor');
+        _uploadEditor.ready(function () {
+            //设置编辑器不可用
+            //_uploadEditor.setDisabled();
+            //隐藏编辑器，因为不会用到这个编辑器实例，所以要隐藏
+            _uploadEditor.hide();
+            //侦听图片上传
+            _uploadEditor.addListener('beforeInsertImage', function (t, arg) {
+                //图片预览
+                $("#people_img").attr("src", arg[0].src);
+            })
+        });
+    });
+    //弹出图片上传的对话框
+    $('#people_aimg').click(function () {
+        var myImage = _uploadEditor.getDialog("insertimage");
+        myImage.open();
+    });
+</script>
+<script src="js/own/messageBoard.js"></script>
+</html>

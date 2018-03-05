@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>写文章 - 举酒属客博客管理系统</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="apple-touch-icon-precomposed" href="images/icon/icon.png">
+    <link rel="shortcut icon" href="images/icon/favicon.ico">
+    <script src="js/Quote/jquery-2.1.4.min.js"></script>
+    <script src="js/Quote/jquery.cookie.js"></script>
+    <script src="lib/layer/layer.js"></script>
+    <script>
+        if(!$.cookie("signIn")&&!$.cookie("signIn2")) {
+            window.location.href = 'login.html';
+        }
+    </script>       <!--判断是否记住密码-->
+</head>
+
+<body class="user-select">
+<section class="container-fluid">
+    <!--<header>-->
+        <!--<nav class="navbar navbar-default navbar-fixed-top" style="z-index: 500">-->
+            <!--<div class="container-fluid">-->
+                <!--<div class="navbar-header">-->
+                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>-->
+                    <!--<a class="navbar-brand" href="/">JjskCMS</a> </div>-->
+                <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+                    <!--<ul class="nav navbar-nav navbar-right">-->
+                        <!--<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> </a></li>-->
+                        <!--<li><a href="JavaScript:;" id="logoutLogin">退出登录</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</nav>-->
+    <!--</header>-->
+    <div class="row">
+        <!--<aside class="col-sm-3 col-md-2 col-lg-2 sidebar">-->
+            <!--<ul class="nav nav-sidebar">-->
+                <!--<li class="active"><a href="listArticle.html">文章</a></li>-->
+                <!--<li><a href="label.html">标签</a></li>-->
+                <!--<li><a href="message.html">留言</a></li>-->
+            <!--</ul>-->
+        <!--</aside>-->
+        <script src="js/own/innerHtml.js"></script>
+        <script>$('.nav-sidebar>li:eq(0)').addClass('active')</script>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+            <div class="row">
+                <form  class="add-article-form">
+                    <div class="col-md-9">
+                        <h1 class="page-header">修改文章</h1>
+                        <div class="form-group">
+                            <label for="article-title" class="sr-only">标题</label>
+                            <input type="text" id="article-title" name="title" class="form-control" placeholder="在此处输入标题" required autofocus autocomplete="off" >
+                        </div>
+                        <div class="form-group">
+                            <label for="article-content" class="sr-only">内容</label>
+                            <script id="article-content" name="content" type="text/plain"></script>
+                        </div>
+                        <div class="add-article-box">
+                            <h2 class="add-article-box-title"><span>摘要</span></h2>
+                            <div class="add-article-box-content">
+                                <textarea class="form-control" name="describe" autocomplete="off" ></textarea>
+                                <span class="prompt-text">对文章整体结构、思想的概括性说明，以最简练的语言表达全文内容</span>
+                            </div>
+                        </div>
+                        <div class="add-article-box">
+                            <h2 class="add-article-box-title"><span>标题图片</span></h2>
+                            <div class="add-article-box-content">
+                                <input type="text" class="form-control" placeholder="点击按钮选择图片" id="pictureUpload" name="titlepic" autocomplete="off" >
+                            </div>
+                            <div class="add-article-box-footer">
+                                <button class="btn btn-default pull-left" type="button" ID="upImage">选择</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-3">
+                        <h1 class="page-header">操作</h1>
+                        <div class="add-article-box">
+                            <h2 class="add-article-box-title"><span>标签</span></h2>
+                            <div class="add-article-box-content">
+                                <select id="addlable" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="add-article-box">
+                            <h2 class="add-article-box-title"><span>发布</span></h2>
+                            <div class="add-article-box-content">
+                                <p><label>是否显示：</label><input type="radio" name="visibility" value="1"  class="isblock1">是 <input class="isblock11" type="radio" name="visibility" value="0">否</p>
+                                <p><label>是否推荐：</label><input type="radio" value="1" name="tuijian" class="isblock2">是 <input class="isblock22" type="radio" name="tuijian" value="0">否</p>
+                                <p><label>发布于：</label><span class="article-time-display"><input style="border: none;" type="datetime" name="time" id="time" value="2000/00/00" ></span></p>
+                            </div>
+                            <div class="add-article-box-footer">
+                                <a class="btn btn-primary pull-right" id="mybtn">发布</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="js/Quote/bootstrap.min.js"></script>
+<script src="js/own/admin-scripts.js"></script>
+<script src="lib/ueditor/ueditor.config.js"></script>
+<script src="lib/ueditor/ueditor.all.js"> </script>
+<script src="lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script id="uploadEditor" type="text/plain" style="display:none;"></script>
+<script type="text/javascript">
+    var editor = UE.getEditor('article-content');
+    window.onresize=function() {
+        window.location.reload();
+    };
+
+    var _uploadEditor;
+    $(function () {
+        //重新实例化一个编辑器，防止在上面的editor编辑器中显示上传的图片或者文件
+        _uploadEditor = UE.getEditor('uploadEditor');
+        _uploadEditor.ready(function () {
+            //设置编辑器不可用
+            //_uploadEditor.setDisabled();
+            //隐藏编辑器，因为不会用到这个编辑器实例，所以要隐藏
+            _uploadEditor.hide();
+            //侦听图片上传
+            _uploadEditor.addListener('beforeInsertImage', function (t, arg) {
+                //将地址赋值给相应的input,只取第一张图片的路径
+//                $("#pictureUpload").attr("value", arg[0].src);
+                $("#pictureUpload").val(arg[0].src);
+            });
+        });
+    });
+    //弹出图片上传的对话框
+    $('#upImage').click(function () {
+        var myImage = _uploadEditor.getDialog("insertimage");
+        myImage.open();
+    });
+</script>
+<script src="js/own/editArticle.js"></script>
+</body>
+</html>
